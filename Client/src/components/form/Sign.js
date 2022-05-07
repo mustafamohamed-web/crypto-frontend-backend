@@ -4,7 +4,7 @@ import useForm from "./useForm";
 import "../../styles/Form.css";
 
 const Sign = ({ submitForm }) => {
-  const { handleChange, handleSubmit, values, errors } = useForm(
+  const { handleChange, handleSubmit, values, errors, register } = useForm(
     submitForm,
     validate
   );
@@ -64,7 +64,7 @@ const Sign = ({ submitForm }) => {
           />
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
-        <button className="form-input-btn" type="submit">
+        <button onClick={register} className="form-input-btn" type="submit">
           Sign up
         </button>
         <span className="form-input-login">

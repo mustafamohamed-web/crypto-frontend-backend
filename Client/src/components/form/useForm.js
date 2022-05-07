@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
@@ -9,6 +10,21 @@ const useForm = (callback, validate) => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [registerUser, setRegisterUser] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+
+  const register = () => {
+    axios
+      .post("http://localhost3001/register", {
+        username: registerUser,
+        password: registerPassword,
+        email: registerEmail,
+      })
+      .then((response) => {
+        console.log(response);
+      });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,6 +32,10 @@ const useForm = (callback, validate) => {
       ...values,
       [name]: value,
     });
+
+    setRegisterUser(e.target.value);
+    setRegisterPassword(e.target.value);
+    setRegisterEmail(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -31,7 +51,7 @@ const useForm = (callback, validate) => {
     }
   }, [errors]);
 
-  return { handleChange, handleSubmit, values, errors };
+  return { handleChange, handleSubmit, values, errors, register };
 };
 
 export default useForm;

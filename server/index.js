@@ -1,7 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const mysql = require("mysql2");
+app.use(express.json());
 
 const db = mysql.createConnection({
   user: "root",
@@ -10,14 +12,18 @@ const db = mysql.createConnection({
   database: "Login",
 });
 
-app.get("/insert", (req, res) => {
+app.post("/register", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const email = req.body.email;
+
   db.query(
-    "INSERT INTO Login (username, password) VALUES ('hannan', 'mustafa')",
+    "INSERT INTO Login (username, password, email ) VALUES (?,?,?)",
+    [username, password, email],
     (err, result) => {
       if (err) {
         console.log(err);
       }
-      res.send(result);
     }
   );
 });
