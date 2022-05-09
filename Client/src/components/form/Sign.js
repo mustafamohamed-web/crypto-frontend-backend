@@ -1,17 +1,29 @@
-import React from "react";
-import validate from "./validateInfo";
-import useForm from "./useForm";
+import React, { useState } from "react";
+import axios from "axios";
+
 import "../../styles/Form.css";
 
-const Sign = ({ submitForm }) => {
-  const { handleChange, handleSubmit, values, errors, register } = useForm(
-    submitForm,
-    validate
-  );
+const Sign = () => {
+  const [userRegister, setUserRegister] = useState("");
+  const [passwordRegister, setPasswordRegister] = useState("");
 
+  const register = (e) => {
+    axios
+      .post("http://localhost:3001/register", {
+        username: userRegister,
+        password: passwordRegister,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    e.preventDefault();
+  };
   return (
     <div className="form-content-right">
-      <form onSubmit={handleSubmit} className="form" noValidate>
+      <form className="form">
         <h1>
           Get started with us today! Create your account by filling out the
           information below.
@@ -23,23 +35,12 @@ const Sign = ({ submitForm }) => {
             type="text"
             name="username"
             placeholder="Enter your username"
-            value={values.username}
-            onChange={handleChange}
+            onChange={(e) => {
+              setUserRegister(e.target.value);
+            }}
           />
-          {errors.username && <p>{errors.username}</p>}
         </div>
-        <div className="form-inputs">
-          <label className="form-label">Email</label>
-          <input
-            className="form-input"
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={values.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p>{errors.email}</p>}
-        </div>
+
         <div className="form-inputs">
           <label className="form-label">Password</label>
           <input
@@ -47,23 +48,12 @@ const Sign = ({ submitForm }) => {
             type="password"
             name="password"
             placeholder="Enter your password"
-            value={values.password}
-            onChange={handleChange}
+            onChange={(e) => {
+              setPasswordRegister(e.target.value);
+            }}
           />
-          {errors.password && <p>{errors.password}</p>}
         </div>
-        <div className="form-inputs">
-          <label className="form-label">Confirm Password</label>
-          <input
-            className="form-input"
-            type="password"
-            name="password2"
-            placeholder="Confirm your password"
-            value={values.password2}
-            onChange={handleChange}
-          />
-          {errors.password2 && <p>{errors.password2}</p>}
-        </div>
+
         <button onClick={register} className="form-input-btn" type="submit">
           Sign up
         </button>
