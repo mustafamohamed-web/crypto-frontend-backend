@@ -6,7 +6,7 @@
 
 This is an ongoing crypto application i built using react, node.js, express and mysql. This app allows users to search for any top 100 crypto and find out details such as price, market cap, all time high and price change within the last 24hrs. I decided to challange myself and take it a step futher by using react router to enable the user to switch through pages smoothly. I also added a sign up and login functionality where the user is able to sign up then use that same username and password to login. I used Node.js and express for the backend and mysql for the database
 
-Technologies used include: React, React router Express, Node.js, Axios, HTML & Tailwind CSS, and Javascript.
+Technologies used include: React, React router Express, Node.js, Axios, HTML & Tailwind CSS, mysql and Javascript.
 
 <h2> About crypto app </h2>
 
