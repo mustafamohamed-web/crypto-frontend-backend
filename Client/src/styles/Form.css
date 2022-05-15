@@ -7,6 +7,7 @@
   height: 600px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
 }
 
 .close-btn {
@@ -152,4 +153,21 @@
   text-decoration: none;
   color: #27cdff;
   font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .form-content-left {
+    display: none;
+  }
+  .form-content-right {
+    background-color: black;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .form-input-btn {
+    display: inline-block;
+  }
+  .body {
+    overflow: hidden;
+  }
 }

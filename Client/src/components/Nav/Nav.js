@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../../assests/logo.png";
 import "../../styles/Nav.css";
 import { Link } from "react-router-dom";
@@ -18,12 +18,14 @@ const Nav = () => {
               <Link to="/market">Market</Link>
             </li>
             <li>
-              <Link to="/sign ">Sign up</Link>
+              <Link to="/sign">Sign up</Link>
+            </li>
+            <li>
+              <Link to="/login"> Login</Link>
             </li>
           </ul>
         </nav>
       </div>
-      <button></button>
     </div>
   );
 };
