@@ -28,25 +28,25 @@ app.post("/register", (req, res) => {
   );
 });
 
-// app.post("/login", (req, res) => {
-//   const username = req.body.username;
-//   const password = req.body.password;
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
 
-//   db.query(
-//     "SELECT * FROM Register WHERE username = ? AND password = ? ",
-//     [username, password],
-//     (err, result) => {
-//       if (err) {
-//         res.send({ err: err });
-//       }
-//       if (result.length > 0) {
-//         res.send(result);
-//       } else {
-//         res.send({ message: "Wrong password/username" });
-//       }
-//     }
-//   );
-// });
+  db.query(
+    "SELECT * FROM Register WHERE username = ? AND password = ? ",
+    [username, password],
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({ message: "Wrong password/username" });
+      }
+    }
+  );
+});
 
 app.listen(3001, () => {
   console.log("server running on port 3001");
