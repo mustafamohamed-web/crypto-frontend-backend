@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+
 import "../../styles/Form.css";
 
 const Sign = () => {
   const [userRegister, setUserRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
-
   const register = (e) => {
     axios
       .post("http://localhost:3001/register", {
@@ -20,6 +20,7 @@ const Sign = () => {
       });
     e.preventDefault();
   };
+
   return (
     <div className="form-content-right">
       <form className="form">
