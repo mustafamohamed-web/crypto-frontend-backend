@@ -78,6 +78,10 @@ h2 {
   width: 100px;
 }
 
+p {
+  color: white;
+}
+
 @media (max-width: 1300px) {
   .div-divider {
     display: none;

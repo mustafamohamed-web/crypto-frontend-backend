@@ -31,6 +31,8 @@ const Market = () => {
 
   const filteredData = data.filter((coin) => coin.symbol.includes(search));
 
+  // BACKEND CALL
+
   return (
     <div>
       <h2>Search currency</h2>
@@ -44,6 +46,7 @@ const Market = () => {
                   <img className="coin-img" src={info.image} alt="" />
                   <p className="coin-name">{info.name}</p>
                 </div>
+
                 <div className="coin-info">
                   <p className="price">${info.current_price}</p>
                   <p className="volume">
